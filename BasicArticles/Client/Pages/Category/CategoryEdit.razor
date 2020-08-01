@@ -1,0 +1,13 @@
+﻿@page "/category/edit/{id:long}"
+@inherits CategoryEditBase
+@attribute [Authorize]
+
+    <EditForm Model="@CategoryViewModel" OnValidSubmit="HandleValidEdit">
+        <DataAnnotationsValidator />
+
+        <div class="form-title">Edit Category</div>
+        <CategoryForm Model="@CategoryViewModel" />
+
+        <button class="form-submit" type="submit">Submit</button>
+        <button class="form-cancel" type="submit" @onclick="Cancel_Click">Cancel</button>
+    </EditForm>

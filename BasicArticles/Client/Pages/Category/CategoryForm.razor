@@ -1,0 +1,15 @@
+﻿<div class="form-wrapper">
+    <div class="form-label">
+        Name
+    </div>
+    <InputText class="form-input" placeholder="@(Model.Name == null ? "Insert name..." : Model.Name)"
+               @bind-Value="Model.Name" />
+    <div class="form-validation">
+        <ValidationMessage For="@(() => Model.Name)" />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public CategoryViewModel Model { get; set; }
+}

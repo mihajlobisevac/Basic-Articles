@@ -1,0 +1,23 @@
+﻿<div class="main-article">
+
+    <img alt="" src="img/@Article.ImagePath">
+    <div class="inner-shadow"></div>
+    <a href="" class="comments-box">432</a>
+
+    <div class="article-text">
+        <h1>
+            <a href="">
+                @Article.Title
+            </a>
+        </h1>
+        <p>
+            @Article.IntroText
+        </p>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public ArticleModel Article { get; set; }
+}

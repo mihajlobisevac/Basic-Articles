@@ -1,0 +1,18 @@
+﻿@page "/cat/{CategoryName}"
+@inherits CategoryBase
+
+@if (Articles == null)
+{
+    <div class="spinner"></div>
+}
+else if(Articles.Count == 0)
+{
+    <h5>There is 0 articles in this category</h5>
+}
+else
+{
+    @foreach (var articleModel in Articles)
+    {
+        <DisplayArticle Article="articleModel" />
+    }
+}

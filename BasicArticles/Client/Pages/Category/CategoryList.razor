@@ -1,0 +1,21 @@
+﻿@page "/category/list"
+@inherits CategoryListBase
+@attribute [Authorize]
+
+@if (CategoryList == null || CategoryList.Count() == 0)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    @foreach (var category in CategoryList)
+    {
+        string editRoute = $"category/edit/{category.Id}";
+
+        <div class="category-list">
+            <div class="category-name">@category.Name</div>
+            <button class="form-submit" @onclick="() => Navigate(editRoute)">Edit</button>
+            <button class="form-cancel" @onclick="() => DeleteCategory(category.Id)">Delete</button>
+        </div>
+    }
+}

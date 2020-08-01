@@ -1,0 +1,28 @@
+﻿@page "/manage"
+@inherits ManagePanelBase
+@attribute [Authorize]
+
+<div class="manage-wrapper">
+    <div class="main-manage">
+        <h3>Categories</h3>
+        <div @onclick="@(() => Navigate("category/list"))" class="manage-btn">All Categories</div>
+        <div @onclick="@(() => Navigate("category/create"))" class="manage-btn">Create</div>
+    </div>
+    <div class="main-manage">
+        <h3>My Articles</h3>
+        <div class="manage-btn">Create</div>
+        <div class="manage-btn">Update</div>
+        <div class="manage-btn">Delete</div>
+    </div>
+    <div class="main-manage">
+        <h3>My Comments</h3>
+        <div class="manage-btn">Update</div>
+        <div class="manage-btn">Delete</div>
+    </div>
+</div>
+
+<button class="form-cancel" 
+        style="font-size: 1.3rem; font-family: 'Nunito'; font-weight: 100;"
+        @onclick="BeginSignOut">
+    Logout
+</button>

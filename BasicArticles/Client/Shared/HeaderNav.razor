@@ -1,0 +1,126 @@
+﻿@inherits HeaderNavBase
+
+
+<AuthorizeView>
+    <Authorized>
+        @if (Categories != null || Categories.Count() > 0)
+        {
+            <div class="manage">
+                <a href="manage">Manage</a>
+            </div>
+
+            <header>
+                <div class="header-wrapper">
+                    <div class="header-title noselect">Basic Articles</div>
+                </div>
+            </header>
+            <nav>
+                <div class="main-nav noselect">
+
+                    <NavLink href="">home</NavLink>
+
+                    @for (int i = 0; i < Categories.Count; i++)
+                    {
+                        if (Categories[i] != null)
+                        {
+                            string navRoute = $"cat/{Categories[i].Name}";
+                            string navName = Categories[i].Name.ToLower();
+                            if (i < 3)
+                            {
+                                <NavLink href="@navRoute">@navName</NavLink>
+                            }
+                            if (i >= 3 && i < 5)
+                            {
+                                <NavLink href="@navRoute" class="show-desktop">@navName</NavLink>
+                            }
+                        }
+                    }
+
+                    <div class="more-dropdown">
+                        <div class="more-dropbtn" onclick="moreDropdown()">more</div>
+                        <div class="dropdown-content" id="moreItems">
+
+                            @for (int i = 3; i < Categories.Count; i++)
+                            {
+                                if (Categories[i] != null)
+                                {
+                                    string navRoute = $"cat/{Categories[i].Name}";
+                                    string navName = Categories[i].Name.ToLower();
+                                    if (i >= 3 && i < 5)
+                                    {
+                                        <NavLink href="@navRoute" class="show-mobile">@navName</NavLink>
+                                    }
+                                    if (i >= 5)
+                                    {
+                                        <NavLink href="@navRoute">@navName</NavLink>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+        }
+    </Authorized>
+    <NotAuthorized>
+        @if (Categories != null || Categories.Count() > 0)
+        {
+            <div class="manage">
+                <a href="authentication/login">Login</a>
+            </div>
+
+            <header>
+                <div class="header-wrapper">
+                    <div class="header-title noselect">Basic Articles</div>
+                </div>
+            </header>
+            <nav>
+                <div class="main-nav noselect">
+
+                    <NavLink href="">home</NavLink>
+
+                    @for (int i = 0; i < Categories.Count; i++)
+                    {
+                        if (Categories[i] != null)
+                        {
+                            string navRoute = $"cat/{Categories[i].Name}";
+                            string navName = Categories[i].Name.ToLower();
+                            if (i < 3)
+                            {
+                                <NavLink href="@navRoute">@navName</NavLink>
+                            }
+                            if (i >= 3 && i < 5)
+                            {
+                                <NavLink href="@navRoute" class="show-desktop">@navName</NavLink>
+                            }
+                        }
+                    }
+
+                    <div class="more-dropdown">
+                        <div class="more-dropbtn" onclick="moreDropdown()">more</div>
+                        <div class="dropdown-content" id="moreItems">
+                            @for (int i = 3; i < Categories.Count; i++)
+                            {
+                                if (Categories[i] != null)
+                                {
+                                    string navRoute = $"cat/{Categories[i].Name}";
+                                    string navName = Categories[i].Name.ToLower();
+                                    if (i >= 3 && i < 5)
+                                    {
+                                        <NavLink href="@navRoute" class="show-mobile">@navName</NavLink>
+                                    }
+                                    if (i >= 5)
+                                    {
+                                        <NavLink href="@navRoute">@navName</NavLink>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+        }
+    </NotAuthorized>
+</AuthorizeView>
