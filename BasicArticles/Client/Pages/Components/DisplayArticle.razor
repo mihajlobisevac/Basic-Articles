@@ -1,12 +1,14 @@
-﻿<div class="main-article">
+﻿@inject NavigationManager Navigation
 
-    <img alt="" src="img/@Article.ImagePath">
-    <div class="inner-shadow"></div>
+<div class="main-article">
+
+    <img alt="" src="img/@Article.ImagePath" @onclick="Navigate">
+    <div class="inner-shadow"  @onclick="Navigate"></div>
     <a href="" class="comments-box">432</a>
 
     <div class="article-text">
         <h1>
-            <a href="">
+            <a href="art/@Article.Id">
                 @Article.Title
             </a>
         </h1>
@@ -20,4 +22,9 @@
 @code {
     [Parameter]
     public ArticleModel Article { get; set; }
+
+    protected void Navigate()
+    {
+        Navigation.NavigateTo($"art/{Article.Id}");
+    }
 }

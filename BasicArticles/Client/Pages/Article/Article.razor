@@ -1,0 +1,21 @@
+﻿@page "/art/{Id:long}"
+@inherits ArticleBase
+
+@if (ArticleModel != null)
+{
+    <div class="article-wrapper">
+        <div class="article-author">Author: @ArticleModel.User</div>
+        <div class="article-title">@ArticleModel.Title</div>
+        <div class="article-intro">@ArticleModel.IntroText</div>
+        <div class="article-image">
+            <img alt="" src="img/@ArticleModel.ImagePath">
+        </div>
+        <div class="article-body">
+            @ArticleModel.BodyText
+        </div>
+    </div>
+}
+else
+{
+    <h4>Article not found</h4>
+}
