@@ -480,19 +480,19 @@ nav a {
     width: 100%;
 }
 
-    .form-wrapper .form-label {
+    .form-label {
         font-weight: 400;
         font-size: 1.1rem;
         padding: 1em 1em 0 1em;
     }
 
-    .form-wrapper .form-input {
+    .form-input {
         margin: .5em 0;
         padding: 1em;
         border: 0;
         width: 100%;
         font-size: 1rem;
-        border-radius: 50px;
+        border-radius: 1em;
         background-color: #d3d3d3;
     }
 
@@ -501,12 +501,12 @@ nav a {
         box-shadow: 0px 4px 8px 0px rgba(0,0,0,.2);
     }
 
-    .form-wrapper .form-textarea {
+    .form-textarea {
         resize: vertical;
         font-family: 'Nunito';
     }
 
-    .form-wrapper .form-validation {
+    .form-validation {
         padding: 0 1em 1em 1em;
         min-height: 1em;
         color: red;

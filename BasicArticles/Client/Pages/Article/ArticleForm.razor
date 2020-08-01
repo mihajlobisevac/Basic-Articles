@@ -1,0 +1,59 @@
+﻿<div class="form-wrapper">
+    <div class="form-label">
+        Title
+    </div>
+    <InputText class="form-input" placeholder="@(Model.Title == null ? "Insert article title..." : Model.Title)"
+               @bind-Value="Model.Title" />
+    <div class="form-validation">
+        <ValidationMessage For="@(() => Model.Title)" />
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="form-label">
+        Intro Text
+    </div>
+    <InputText class="form-input" placeholder="@(Model.IntroText == null ? "Insert intro text..." : Model.IntroText)"
+               @bind-Value="Model.IntroText" />
+    <div class="form-validation">
+        <ValidationMessage For="@(() => Model.IntroText)" />
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="form-label">
+        Article Text
+    </div>
+    <InputTextArea class="form-input form-textarea" placeholder="@(Model.BodyText == null ? "Insert article text..." : Model.BodyText)" rows="8"
+                   @bind-Value="Model.BodyText" />
+    <div class="form-validation">
+        <ValidationMessage For="@(() => Model.BodyText)" />
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="form-label">
+        Category
+    </div>
+    <InputText class="form-input" placeholder="@(Model.IntroText == null ? "Insert category name... (multiple allowed)" : Model.Category)"
+               @bind-Value="Model.Category" />
+    <div class="form-validation">
+        <ValidationMessage For="@(() => Model.Category)" />
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="form-label">
+        Image
+    </div>
+    <InputText class="form-input" placeholder="@(Model.ImagePath == null ? "Insert image..." : Model.ImagePath)"
+               @bind-Value="Model.ImagePath" />
+    <div class="form-validation">
+        <ValidationMessage For="@(() => Model.ImagePath)" />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public ArticleViewModel Model { get; set; }
+}

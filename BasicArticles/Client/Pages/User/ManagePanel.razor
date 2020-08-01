@@ -10,7 +10,7 @@
     </div>
     <div class="main-manage">
         <h3>My Articles</h3>
-        <div class="manage-btn">Create</div>
+        <div @onclick="@(() => Navigate("article/create"))" class="manage-btn">Create</div>
         <div class="manage-btn">Update</div>
         <div class="manage-btn">Delete</div>
     </div>

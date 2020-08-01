@@ -33,10 +33,6 @@ namespace BasicArticles.Client.ViewModels.Article
 
         public ArticleViewModel()
         {
-            Title = "Insert title";
-            IntroText = "Insert introduction text";
-            BodyText = "Insert body text";
-            ImagePath = "noimage.png";
         }
 
         public static implicit operator ArticleViewModel(ArticleModel i)
