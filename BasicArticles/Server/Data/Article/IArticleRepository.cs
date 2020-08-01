@@ -11,6 +11,7 @@ namespace BasicArticles.Server.Data.Article
         Task<IEnumerable<ArticleModel>> Search(string name);
         Task<IEnumerable<ArticleModel>> GetArticleList();
         Task<List<ArticleModel>> GetArticleListByCategory(string category);
+        Task<List<ArticleModel>> GetArticleListByUser(string user);
         Task<ArticleModel> GetArticle(long id);
         Task<ArticleModel> AddArticle(ArticleModel model);
         Task<ArticleModel> UpdateArticle(ArticleModel model);

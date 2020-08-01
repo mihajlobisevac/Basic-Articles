@@ -1,0 +1,28 @@
+﻿@page "/myarticles"
+@inherits ArticleListBase
+@attribute [Authorize]
+
+@if (ArticleList == null)
+{
+    <div class="spinner"></div>
+}
+else if (ArticleList.Count() == 0)
+{
+    <h5>You have 0 articles.</h5>
+    <button class="form-cancel" style="font-size: 1.3rem; font-family: 'Nunito'; font-weight: 100;" @onclick="@(() => Navigate("article/create"))">
+        Create New
+    </button>
+}
+else
+{
+    @foreach (var article in ArticleList)
+    {
+        string editRoute = $"myarticles/edit/{article.Id}";
+
+        <div class="category-list">
+            <div class="category-name">@article.Title</div>
+            <button class="form-submit" @onclick="() => Navigate(editRoute)">Edit</button>
+            <button class="form-cancel" @onclick="() => DeleteArticle(article.Id)">Delete</button>
+        </div>
+    }
+}

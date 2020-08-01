@@ -1,0 +1,24 @@
+﻿@page "/myarticles/edit/{id:long}"
+@inherits ArticleEditBase
+@attribute [Authorize]
+
+@if (ArticleViewModel == null)
+{
+    <div class="spinner"></div>
+}
+else if (ArticleViewModel.User != Username)
+{
+    <h4>Access denied. This is not your article.</h4>
+}
+else
+{
+    <EditForm Model="@ArticleViewModel" OnValidSubmit="HandleValidEdit">
+        <DataAnnotationsValidator />
+
+        <div class="form-title">Edit Article</div>
+        <ArticleForm Model="@ArticleViewModel" />
+
+        <button class="form-submit" type="submit">Submit</button>
+        <button class="form-cancel" type="submit" @onclick="Cancel_Click">Cancel</button>
+    </EditForm>
+}

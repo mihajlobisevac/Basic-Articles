@@ -54,6 +54,14 @@ namespace BasicArticles.Server.Data.Article
                             .ToListAsync();
         }
 
+        public async Task<List<ArticleModel>> GetArticleListByUser(string user)
+        {
+            return await dbContext
+                            .Articles
+                            .Where(i => i.User == user)
+                            .ToListAsync();
+        }
+
         public async Task<IEnumerable<ArticleModel>> Search(string name)
         {
             IQueryable<ArticleModel> query = dbContext.Articles;

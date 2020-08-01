@@ -72,6 +72,21 @@ namespace BasicArticles.Server.Controllers
             }
         }
 
+        // GET: /Article/User/
+        [HttpGet("User/{user}")]
+        public async Task<ActionResult<List<ArticleModel>>> GetArticlesByUser(string user)
+        {
+            try
+            {
+                return Ok(await repository.GetArticleListByUser(user));
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from database");
+            }
+        }
+
         // GET: /Article/5
         [HttpGet("{id:long}")]
         public async Task<ActionResult<ArticleModel>> GetArticle(long id)

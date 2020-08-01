@@ -90,6 +90,11 @@ namespace BasicArticles.Client.ViewModels.Article
             return await HttpClient.GetFromJsonAsync<List<ArticleModel>>($"Article/Category/{category}");
         }
 
+        public async Task<List<ArticleModel>> GetArticleListByUser(string user)
+        {
+            return await HttpClient.GetFromJsonAsync<List<ArticleModel>>($"Article/User/{user}");
+        }
+
         public async Task UpdateArticle(long id, ArticleModel model)
         {
             await HttpClient.PutAsJsonAsync($"Article/{id}", model);
