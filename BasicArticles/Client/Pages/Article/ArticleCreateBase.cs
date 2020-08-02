@@ -33,9 +33,7 @@ namespace BasicArticles.Client.Pages.Article
             ArticleViewModel.UpdatedDate = DateTime.Now;
 
             var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-            var user = authState.User;
-
-            ArticleViewModel.User = user.Identity.Name;
+            ArticleViewModel.User = authState.User.Identity.Name;
 
             ArticleModel = ArticleViewModel;
 

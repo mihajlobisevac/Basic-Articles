@@ -38,6 +38,8 @@ namespace BasicArticles.Client.Pages.Article
 
         protected async Task HandleValidEdit()
         {
+            ArticleViewModel.UpdatedDate = DateTime.Now;
+
             ArticleModel = ArticleViewModel;
 
             await ArticleService.UpdateArticle(Id, ArticleModel);
