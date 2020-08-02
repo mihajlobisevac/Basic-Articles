@@ -17,10 +17,13 @@ namespace BasicArticles.Client.Pages.Article
         public long Id { get; set; }
 
         public ArticleModel ArticleModel { get; set; } = new ArticleModel();
+        public string[] SplitBodyText { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
             ArticleModel = await ArticleService.GetArticle(Id);
+
+            SplitBodyText = ArticleModel.BodyText.Split("\n");
         }
     }
 }

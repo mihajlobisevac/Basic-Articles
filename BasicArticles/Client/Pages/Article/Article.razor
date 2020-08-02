@@ -1,18 +1,30 @@
 ﻿@page "/art/{Id:long}"
 @inherits ArticleBase
 
-@if (ArticleModel != null)
+@if (ArticleModel != null && SplitBodyText != null)
 {
     <div class="article-wrapper">
-        <div class="article-author">Author: @ArticleModel.User</div>
+        <div class="article-author">
+            Published @ArticleModel.PublishedDate by @ArticleModel.User
+        </div>
         <div class="article-title">@ArticleModel.Title</div>
         <div class="article-intro">@ArticleModel.IntroText</div>
         <div class="article-image">
             <img alt="" src="img/@ArticleModel.ImagePath">
         </div>
         <div class="article-body">
-            @ArticleModel.BodyText
+            @foreach (var item in SplitBodyText)
+            {
+                @item
+                <br />
+            }
         </div>
+        @if (ArticleModel.PublishedDate != ArticleModel.UpdatedDate)
+        {            
+            <div class="article-author">
+                Last updated: @ArticleModel.UpdatedDate
+            </div>
+        }
     </div>
 }
 else
