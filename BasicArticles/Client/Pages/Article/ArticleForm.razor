@@ -13,8 +13,8 @@
     <div class="form-label">
         Intro Text
     </div>
-    <InputText class="form-input" placeholder="@(Model.IntroText == null ? "Insert intro text..." : Model.IntroText)"
-               @bind-Value="Model.IntroText" />
+    <InputTextArea class="form-input form-textarea" placeholder="@(Model.IntroText == null ? "Insert intro text..." : Model.IntroText)" rows="3"
+               @bind-Value="Model.IntroText" style="min-height: 100px;" />
     <div class="form-validation">
         <ValidationMessage For="@(() => Model.IntroText)" />
     </div>
@@ -25,7 +25,7 @@
         Article Text
     </div>
     <InputTextArea class="form-input form-textarea" placeholder="@(Model.BodyText == null ? "Insert article text..." : Model.BodyText)" rows="8"
-                   @bind-Value="Model.BodyText" />
+                   @bind-Value="Model.BodyText" style="min-height: 250px;" />
     <div class="form-validation">
         <ValidationMessage For="@(() => Model.BodyText)" />
     </div>
