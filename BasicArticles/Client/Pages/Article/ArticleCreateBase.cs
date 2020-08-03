@@ -17,10 +17,24 @@ namespace BasicArticles.Client.Pages.Article
         [Inject]
         public IArticleViewModel ArticleService { get; set; }
         [Inject]
+        public ICategoryViewModel CategoryService { get; set; }
+        [Inject]
         public NavigationManager Navigation { get; set; }
 
         public ArticleModel ArticleModel { get; set; } = new ArticleModel();
         public ArticleViewModel ArticleViewModel { get; set; } = new ArticleViewModel();
+        public List<CategoryModel> Categories { get; set; } = new List<CategoryModel>();
+        public List<CategoryViewModel> CategoriesViewModel { get; set; } = new List<CategoryViewModel>();
+
+        protected override async Task OnInitializedAsync()
+        {
+            Categories = await CategoryService.GetCategoryList();
+
+            foreach (var category in Categories)
+            {
+                CategoriesViewModel.Add(category);
+            }
+        }
 
         protected void Cancel_Click()
         {
@@ -31,6 +45,14 @@ namespace BasicArticles.Client.Pages.Article
         {
             ArticleViewModel.PublishedDate = DateTime.Now;
             ArticleViewModel.UpdatedDate = DateTime.Now;
+
+            foreach (var item in CategoriesViewModel)
+            {
+                if (item.Selected == true && !ArticleViewModel.Category.Contains(item.Name))
+                {
+                    ArticleViewModel.Category += item.Name;
+                }
+            }
 
             var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
             ArticleViewModel.User = authState.User.Identity.Name;
