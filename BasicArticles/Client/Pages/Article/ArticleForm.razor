@@ -1,4 +1,6 @@
-﻿<div class="form-wrapper">
+﻿@inherits ArticleFormBase
+
+<div class="form-wrapper">
     <div class="form-label">
         Title
     </div>
@@ -14,7 +16,7 @@
         Intro Text
     </div>
     <InputTextArea class="form-input form-textarea" placeholder="@(Model.IntroText == null ? "Insert intro text..." : Model.IntroText)" rows="3"
-               @bind-Value="Model.IntroText" style="min-height: 100px;" />
+                   @bind-Value="Model.IntroText" style="min-height: 100px;" />
     <div class="form-validation">
         <ValidationMessage For="@(() => Model.IntroText)" />
     </div>
@@ -31,16 +33,27 @@
     </div>
 </div>
 
-<div class="form-wrapper">
-    <div class="form-label">
-        Category
+@if (CategoriesViewModel != null)
+{
+    <div class="form-wrapper">
+
+        <div class="form-label">
+            Category
+        </div>
+        <div class="form-input">
+            @foreach (var item in CategoriesViewModel)
+            {
+                <InputCheckbox placeholder="@item.Selected" id="@item.Name"
+                               @bind-Value="@item.Selected" />
+                <label for="@item.Name">@item.Name</label>
+                <br />
+            }
+        </div>
+        <div class="form-validation">
+            <ValidationMessage For="@(() => Model.Category)" />
+        </div>
     </div>
-    <InputText class="form-input" placeholder="@(Model.IntroText == null ? "Insert category name... (multiple allowed)" : Model.Category)"
-               @bind-Value="Model.Category" />
-    <div class="form-validation">
-        <ValidationMessage For="@(() => Model.Category)" />
-    </div>
-</div>
+}
 
 <div class="form-wrapper">
     <div class="form-label">
@@ -52,8 +65,3 @@
         <ValidationMessage For="@(() => Model.ImagePath)" />
     </div>
 </div>
-
-@code {
-    [Parameter]
-    public ArticleViewModel Model { get; set; }
-}

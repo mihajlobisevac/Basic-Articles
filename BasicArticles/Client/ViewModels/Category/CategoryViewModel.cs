@@ -20,6 +20,7 @@ namespace BasicArticles.Client.ViewModels.Category
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+        public bool Selected { get; set; } = false;
 
         public CategoryViewModel()
         {

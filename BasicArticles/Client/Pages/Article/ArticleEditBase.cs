@@ -1,4 +1,5 @@
 ﻿using BasicArticles.Client.ViewModels.Article;
+using BasicArticles.Client.ViewModels.Category;
 using BasicArticles.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -16,6 +17,8 @@ namespace BasicArticles.Client.Pages.Article
         [Inject]
         public IArticleViewModel ArticleService { get; set; }
         [Inject]
+        public ICategoryViewModel CategoryService { get; set; }
+        [Inject]
         public NavigationManager Navigation { get; set; }
 
         [Parameter]
@@ -23,6 +26,8 @@ namespace BasicArticles.Client.Pages.Article
 
         public ArticleModel ArticleModel { get; set; } = new ArticleModel();
         public ArticleViewModel ArticleViewModel { get; set; } = new ArticleViewModel();
+        public List<CategoryModel> Categories { get; set; } = new List<CategoryModel>();
+        public List<CategoryViewModel> CategoriesViewModel { get; set; } = new List<CategoryViewModel>();
 
         public string Username { get; set; }
 
@@ -34,11 +39,40 @@ namespace BasicArticles.Client.Pages.Article
             Username = authState.User.Identity.Name;
 
             ArticleViewModel = ArticleModel;
+
+            // category
+            Categories = await CategoryService.GetCategoryList();
+
+            foreach (var category in Categories)
+            {
+                CategoriesViewModel.Add(category);
+            }
+
+            foreach (var category in CategoriesViewModel)
+            {
+                if (ArticleViewModel.Category.Contains(category.Name))
+                {
+                    category.Selected = true;
+                }
+            }
         }
 
         protected async Task HandleValidEdit()
         {
             ArticleViewModel.UpdatedDate = DateTime.Now;
+
+            foreach (var item in CategoriesViewModel)
+            {
+                if (item.Selected == true && !ArticleViewModel.Category.Contains(item.Name))
+                {
+                    ArticleViewModel.Category += item.Name;
+                }
+
+                if (item.Selected == false && ArticleViewModel.Category.Contains(item.Name))
+                {
+                    ArticleViewModel.Category = ArticleViewModel.Category.Replace(item.Name, string.Empty);
+                }
+            }
 
             ArticleModel = ArticleViewModel;
 
