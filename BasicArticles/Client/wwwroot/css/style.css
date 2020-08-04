@@ -520,7 +520,7 @@ nav a {
         color: red;
     }
 
-.form-submit, .form-cancel {
+.form-submit, .form-cancel, .form-green {
     margin-top: 1em;
     border-radius: 50px;
     padding: .75em 1em;
@@ -530,7 +530,7 @@ nav a {
     color: #313131;
 }
 
-    .form-submit, .form-cancel:hover {
+    .form-submit, .form-cancel, .form-green:hover {
         cursor: pointer;
     }
 
@@ -541,6 +541,15 @@ nav a {
 
     .form-submit:hover {
         background: #525252;
+    }
+
+.form-green {
+    background-color: #559b68;
+    color: #e7e7e7;
+}
+
+    .form-green:hover {
+        background: #467c54;
     }
 
 .form-cancel {

@@ -71,6 +71,15 @@ namespace BasicArticles.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
+            //cors
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -97,9 +106,13 @@ namespace BasicArticles.Server
 
             app.UseRouting();
 
+            app.UseStaticFiles();
+
             app.UseIdentityServer();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

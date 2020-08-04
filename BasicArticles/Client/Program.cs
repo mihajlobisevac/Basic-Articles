@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using BasicArticles.Client.ViewModels.Article;
 using BasicArticles.Client.ViewModels.Category;
 using BasicArticles.Client.ViewModels.Comment;
+using Tewr.Blazor.FileReader;
 
 namespace BasicArticles.Client
 {
