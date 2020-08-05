@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Linq;
 using BasicArticles.Server.Data;
 using BasicArticles.Server.Models;
 using BasicArticles.Server.Data.Article;
@@ -71,15 +65,6 @@ namespace BasicArticles.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
-            //cors
-            services.AddCors(opt =>
-            {
-                opt.AddPolicy("CorsPolicy", builder => builder
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
-            });
-
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -102,7 +87,6 @@ namespace BasicArticles.Server
 
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
-            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -111,8 +95,6 @@ namespace BasicArticles.Server
             app.UseIdentityServer();
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

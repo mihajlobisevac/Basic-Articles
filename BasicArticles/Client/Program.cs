@@ -1,17 +1,12 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using BasicArticles.Client.ViewModels.Article;
 using BasicArticles.Client.ViewModels.Category;
 using BasicArticles.Client.ViewModels.Comment;
-using Tewr.Blazor.FileReader;
 
 namespace BasicArticles.Client
 {

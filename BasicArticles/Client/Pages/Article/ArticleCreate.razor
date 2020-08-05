@@ -1,13 +1,14 @@
 ﻿@page "/article/create"
 @inherits ArticleCreateBase
-@attribute [Authorize]
+@attribute [Authorize] 
 
-<EditForm Model="@ArticleViewModel" OnValidSubmit="HandleValidCreate">
-    <DataAnnotationsValidator />
+    <EditForm Model="@ArticleViewModel" OnValidSubmit="HandleValidCreate">
+        <DataAnnotationsValidator />
 
-    <div class="form-title">Create Article</div>
-    <ArticleForm Model="@ArticleViewModel" CategoriesViewModel="@CategoriesViewModel" />
+        <div class="form-title">Create Article</div>
 
-    <button class="form-submit" type="submit">Submit</button>
-    <button class="form-cancel" type="submit" @onclick="Cancel_Click">Cancel</button>
-</EditForm> 
+        <ArticleForm Model="@ArticleViewModel" CategoriesViewModel="@CategoriesViewModel" />
+
+        <button class="form-submit" type="submit">Submit</button>
+        <button class="form-cancel" type="submit" @onclick="Cancel_Click">Cancel</button>
+    </EditForm> 
