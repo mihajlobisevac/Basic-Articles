@@ -59,5 +59,16 @@ namespace BasicArticles.Client.Pages.Article
             CommentViewModel.BodyText = null;
             Comments = await CommentService.GetCommentListByArticle(Id);
         }
+
+        protected async Task HandleEditComment()
+        {
+
+        }
+        protected async Task HandleDeleteComment(long comment)
+        {
+            await CommentService.DeleteComment(comment);
+
+            Comments = await CommentService.GetCommentListByArticle(Id);
+        }
     }
 }

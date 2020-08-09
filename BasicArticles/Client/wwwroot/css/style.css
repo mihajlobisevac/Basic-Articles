@@ -633,6 +633,10 @@ nav a {
 }
 
 /*-----------------------*/
+.comments-wrapper {
+    min-width: 100%;
+}
+
 .comment-wrapper {
     margin: 2em 0;
 }
@@ -642,9 +646,33 @@ nav a {
     font-size: 1.1rem;
     color: #559b68;
     margin-bottom: .5em;
+    display: flex;
+    justify-content: space-between;
 }
 
 .comment-comment {
     border-left: 3px solid #d3d3d3;
     padding: 0 .5em;
+}
+
+.comment-edit-button {
+    font-size: .8rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+    background: transparent;
+    color: #686868;
+    margin: 0;
+    padding: 4px 4px 2px 4px;
+}
+
+    .comment-edit-button:hover {
+        cursor: pointer;
+        background: #dbdbdb;
+    }
+
+.comment-date {
+    color: #929292;
+    margin: 0 .3rem;
+    font-weight: 300;
 }

@@ -1,0 +1,15 @@
+﻿<div class="form-wrapper">
+    <div class="form-label">
+        Leave a comment as <span style="color: #559b68;">@User</span>
+    </div>
+    <InputTextArea class="form-input form-textarea" placeholder="Insert text..." rows="4"
+                   @bind-Value="CommentViewModel.BodyText" style="min-height: 100px;" />
+</div>
+
+@code {
+    [Parameter]
+    public string User { get; set; }
+
+    [Parameter]
+    public CommentViewModel CommentViewModel { get; set; }
+}

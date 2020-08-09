@@ -35,13 +35,8 @@
             <EditForm Model="@CommentViewModel" OnValidSubmit="HandleValidComment">
                 <DataAnnotationsValidator />
 
-                <div class="form-wrapper">
-                    <div class="form-label">
-                        Leave a comment as <span style="color: #559b68;">@CommentAs</span>
-                    </div>
-                    <InputTextArea class="form-input form-textarea" placeholder="Insert text..." rows="4"
-                                   @bind-Value="CommentViewModel.BodyText" style="min-height: 100px;" />
-                </div>
+                <ArticleCommentForm CommentViewModel="@CommentViewModel" User="@CommentAs" />
+
                 <div class="form-validation">
                     <ValidationMessage For="@(() => CommentViewModel.BodyText)" />
                 </div>
@@ -64,7 +59,14 @@
             {
                 <div class="comment-wrapper">
                     <div class="comment-user">
-                        @i.User <span class="article-author">@i.PublishedDate</span>
+                        <div>@i.User <span class="comment-date">@i.PublishedDate</span></div>
+                        <div>
+                            @if (i.User == CommentAs)
+                            {
+                                <button class="comment-edit-button" @onclick="HandleEditComment">Edit</button>
+                                <button class="comment-edit-button" @onclick="() => HandleDeleteComment(i.Id)">Delete</button>
+                            }
+                        </div>
                     </div>
                     <div class="comment-comment">
                         @i.BodyText
