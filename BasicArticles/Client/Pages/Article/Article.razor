@@ -59,11 +59,18 @@
             {
                 <div class="comment-wrapper">
                     <div class="comment-user">
-                        <div>@i.User <span class="comment-date">@i.PublishedDate</span></div>
+                        @if (i.PublishedDate == i.UpdatedDate)
+                        {
+                            <div>@i.User <span class="comment-date">@i.PublishedDate</span></div>
+                        }
+                        else
+                        {
+                            <div>@i.User <span class="comment-date">Last edited @i.UpdatedDate</span></div>
+                        }
                         <div>
                             @if (i.User == CommentAs)
                             {
-                                <button class="comment-edit-button" @onclick="HandleEditComment">Edit</button>
+                                <button class="comment-edit-button" @onclick="() => HandleEditComment(i.Id)">Edit</button>
                                 <button class="comment-edit-button" @onclick="() => HandleDeleteComment(i.Id)">Delete</button>
                             }
                         </div>

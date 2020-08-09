@@ -1,0 +1,27 @@
+﻿@page "/com/edit/{id:long}"
+@inherits ArticleEditCommentBase
+
+<AuthorizeView>
+    <NotAuthorized>
+        <div>Access denied</div>
+    </NotAuthorized>
+    <Authorized Context="AuthContext">
+        @if (CommentViewModel.User == CommentAs)
+        {
+            <EditForm Model="@CommentViewModel" OnValidSubmit="HandleValidComment">
+                <DataAnnotationsValidator />
+
+                <ArticleCommentForm CommentViewModel="@CommentViewModel" User="@CommentAs" />
+
+                <div class="form-validation">
+                    <ValidationMessage For="@(() => CommentViewModel.BodyText)" />
+                </div>
+                <button type="submit" class="form-submit" style="margin: 0;">Comment</button>
+            </EditForm>
+        }
+        else
+        {
+            <div>Access denied</div>
+        }
+    </Authorized>
+</AuthorizeView>

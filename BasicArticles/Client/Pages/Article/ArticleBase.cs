@@ -14,6 +14,8 @@ namespace BasicArticles.Client.Pages.Article
     {
         [Inject]
         private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [Inject]
+        private NavigationManager Navigation { get; set; }
 
         [Parameter]
         public long Id { get; set; }
@@ -60,9 +62,9 @@ namespace BasicArticles.Client.Pages.Article
             Comments = await CommentService.GetCommentListByArticle(Id);
         }
 
-        protected async Task HandleEditComment()
+        protected void HandleEditComment(long comment)
         {
-
+            Navigation.NavigateTo($"/com/edit/{comment}");
         }
         protected async Task HandleDeleteComment(long comment)
         {
