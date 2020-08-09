@@ -45,6 +45,10 @@ namespace BasicArticles.Server.Data.Comment
         {
             return await dbContext.Comments.ToListAsync();
         }
+        public async Task<IEnumerable<CommentModel>> GetCommentListByArticle(long id)
+        {
+            return await dbContext.Comments.Where(i => i.Article == id).ToListAsync();
+        }
 
         public async Task<IEnumerable<CommentModel>> Search(string name)
         {

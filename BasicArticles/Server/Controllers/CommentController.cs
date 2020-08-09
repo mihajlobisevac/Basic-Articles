@@ -57,6 +57,21 @@ namespace BasicArticles.Server.Controllers
             }
         }
 
+        // GET: /Comment/list/1
+        [HttpGet("list/{id:long}")]
+        public async Task<ActionResult<IEnumerable<CommentModel>>> GetCommentsByArticle(long id)
+        {
+            try
+            {
+                return Ok(await repository.GetCommentListByArticle(id));
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from database");
+            }
+        }
+
         // GET: /Comment/5
         [HttpGet("{id:long}")]
         public async Task<ActionResult<CommentModel>> GetComment(long id)

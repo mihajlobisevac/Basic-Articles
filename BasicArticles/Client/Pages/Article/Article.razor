@@ -20,14 +20,60 @@
             }
         </div>
         @if (ArticleModel.PublishedDate != ArticleModel.UpdatedDate)
-        {            
+        {
             <div class="article-author">
                 Last updated: @ArticleModel.UpdatedDate
             </div>
         }
     </div>
-}
-else
-{
-    <h4>Article not found</h4>
-}
+
+    <AuthorizeView>
+        <NotAuthorized>
+            <div class="article-author">You must <a href="authentication/login" style="color: #559b68;">login</a> in order to comment</div>
+        </NotAuthorized>
+        <Authorized Context="AuthContext">
+            <EditForm Model="@CommentViewModel" OnValidSubmit="HandleValidComment">
+                <DataAnnotationsValidator />
+
+                <div class="form-wrapper">
+                    <div class="form-label">
+                        Leave a comment as <span style="color: #559b68;">@CommentAs</span>
+                    </div>
+                    <InputTextArea class="form-input form-textarea" placeholder="Insert text..." rows="4"
+                                   @bind-Value="CommentViewModel.BodyText" style="min-height: 100px;" />
+                </div>
+                <div class="form-validation">
+                    <ValidationMessage For="@(() => CommentViewModel.BodyText)" />
+                </div>
+                <button type="submit" class="form-submit" style="margin: 0;">Comment</button>
+            </EditForm>            
+        </Authorized>
+    </AuthorizeView>
+
+    if (Comments == null)
+    {
+        <div class="article-author" style="margin: 1em 0;">Loading comments...</div>
+    }
+    else if (Comments.Count == 0)
+    {
+        <div class="article-author" style="margin: 1em 0;">There's no comments</div>
+        }
+        else
+        {
+            @foreach (var i in Comments)
+            {
+                <div class="comment-wrapper">
+                    <div class="comment-user">
+                        @i.User <span class="article-author">@i.PublishedDate</span>
+                    </div>
+                    <div class="comment-comment">
+                        @i.BodyText
+                    </div>
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <h4>Article not found</h4>
+    }

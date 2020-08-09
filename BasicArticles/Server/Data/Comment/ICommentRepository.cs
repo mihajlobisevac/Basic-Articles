@@ -10,6 +10,7 @@ namespace BasicArticles.Server.Data.Comment
     {
         Task<IEnumerable<CommentModel>> Search(string name);
         Task<IEnumerable<CommentModel>> GetCommentList();
+        Task<IEnumerable<CommentModel>> GetCommentListByArticle(long id);
         Task<CommentModel> GetComment(long id);
         Task<CommentModel> AddComment(CommentModel model);
         Task<CommentModel> UpdateComment(CommentModel model);

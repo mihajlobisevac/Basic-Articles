@@ -631,3 +631,20 @@ nav a {
         float: left;
     }
 }
+
+/*-----------------------*/
+.comment-wrapper {
+    margin: 2em 0;
+}
+
+.comment-user {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #559b68;
+    margin-bottom: .5em;
+}
+
+.comment-comment {
+    border-left: 3px solid #d3d3d3;
+    padding: 0 .5em;
+}

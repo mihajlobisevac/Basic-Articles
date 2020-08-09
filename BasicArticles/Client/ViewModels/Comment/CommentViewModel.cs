@@ -18,7 +18,8 @@ namespace BasicArticles.Client.ViewModels.Comment
 
         [Key]
         public long Id { get; set; }
-        [MaxLength(500)]
+        [MaxLength(500, ErrorMessage = "Comment must contain at most 500 characters")]
+        [MinLength(2, ErrorMessage = "Comment must contain at least 2 characters")]
         public string BodyText { get; set; }
         public DateTime PublishedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
@@ -27,7 +28,6 @@ namespace BasicArticles.Client.ViewModels.Comment
 
         public CommentViewModel()
         {
-            BodyText = "Insert comment";
         }
 
         public static implicit operator CommentViewModel(CommentModel i)
@@ -73,6 +73,11 @@ namespace BasicArticles.Client.ViewModels.Comment
         public async Task<List<CommentModel>> GetCommentList()
         {
             return await HttpClient.GetFromJsonAsync<List<CommentModel>>("Comment");
+        }
+
+        public async Task<List<CommentModel>> GetCommentListByArticle(long id)
+        {
+            return await HttpClient.GetFromJsonAsync<List<CommentModel>>($"Comment/list/{id}");
         }
 
         public async Task UpdateComment(long id, CommentModel model)
