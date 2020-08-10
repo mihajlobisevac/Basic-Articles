@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BasicArticles.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ArticleController : ControllerBase
     {
         private readonly IArticleRepository repository;

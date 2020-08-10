@@ -57,37 +57,37 @@ namespace BasicArticles.Client.ViewModels.Comment
 
         public async Task CreateComment(CommentModel model)
         {
-            await HttpClient.PostAsJsonAsync("Comment", model);
+            await HttpClient.PostAsJsonAsync("api/Comment", model);
         }
 
         public async Task DeleteComment(long id)
         {
-            await HttpClient.DeleteAsync($"Comment/{id}");
+            await HttpClient.DeleteAsync($"api/Comment/{id}");
         }
 
         public async Task<CommentModel> GetComment(long id)
         {
-            return await HttpClient.GetFromJsonAsync<CommentModel>($"Comment/{id}");
+            return await HttpClient.GetFromJsonAsync<CommentModel>($"api/Comment/{id}");
         }
 
         public async Task<List<CommentModel>> GetCommentList()
         {
-            return await HttpClient.GetFromJsonAsync<List<CommentModel>>("Comment");
+            return await HttpClient.GetFromJsonAsync<List<CommentModel>>("api/Comment");
         }
 
         public async Task<List<CommentModel>> GetCommentListByArticle(long id)
         {
-            return await HttpClient.GetFromJsonAsync<List<CommentModel>>($"Comment/list/{id}");
+            return await HttpClient.GetFromJsonAsync<List<CommentModel>>($"api/Comment/list/{id}");
         }
 
         public async Task<List<CommentModel>> GetCommentListByUser(string user)
         {
-            return await HttpClient.GetFromJsonAsync<List<CommentModel>>($"Comment/user/{user}");
+            return await HttpClient.GetFromJsonAsync<List<CommentModel>>($"api/Comment/user/{user}");
         }
 
         public async Task UpdateComment(long id, CommentModel model)
         {
-            await HttpClient.PutAsJsonAsync($"Comment/{id}", model);
+            await HttpClient.PutAsJsonAsync($"api/Comment/{id}", model);
         }
     }
 }

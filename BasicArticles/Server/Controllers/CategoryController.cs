@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BasicArticles.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository repository;

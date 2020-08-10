@@ -69,36 +69,36 @@ namespace BasicArticles.Client.ViewModels.Article
 
         public async Task CreateArticle(ArticleModel model)
         {
-            await HttpClient.PostAsJsonAsync("Article", model);
+            await HttpClient.PostAsJsonAsync("api/Article", model);
         }
 
         public async Task DeleteArticle(long id)
         {
-            await HttpClient.DeleteAsync($"Article/{id}");
+            await HttpClient.DeleteAsync($"api/Article/{id}");
         }
 
         public async Task<ArticleModel> GetArticle(long id)
         {
-            return await HttpClient.GetFromJsonAsync<ArticleModel>($"Article/{id}");
+            return await HttpClient.GetFromJsonAsync<ArticleModel>($"api/Article/{id}");
         }
 
         public async Task<List<ArticleModel>> GetArticleList()
         {
-            return await HttpClient.GetFromJsonAsync<List<ArticleModel>>("Article");
+            return await HttpClient.GetFromJsonAsync<List<ArticleModel>>("api/Article");
         }
         public async Task<List<ArticleModel>> GetArticleListByCategory(string category)
         {
-            return await HttpClient.GetFromJsonAsync<List<ArticleModel>>($"Article/Category/{category}");
+            return await HttpClient.GetFromJsonAsync<List<ArticleModel>>($"api/Article/Category/{category}");
         }
 
         public async Task<List<ArticleModel>> GetArticleListByUser(string user)
         {
-            return await HttpClient.GetFromJsonAsync<List<ArticleModel>>($"Article/User/{user}");
+            return await HttpClient.GetFromJsonAsync<List<ArticleModel>>($"api/Article/User/{user}");
         }
 
         public async Task UpdateArticle(long id, ArticleModel model)
         {
-            await HttpClient.PutAsJsonAsync($"Article/{id}", model);
+            await HttpClient.PutAsJsonAsync($"api/Article/{id}", model);
         }
     }
 }

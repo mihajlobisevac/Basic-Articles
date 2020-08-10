@@ -45,27 +45,27 @@ namespace BasicArticles.Client.ViewModels.Category
 
         public async Task CreateCategory(CategoryModel model)
         {
-            await HttpClient.PostAsJsonAsync("Category", model);
+            await HttpClient.PostAsJsonAsync("api/Category", model);
         }
 
         public async Task DeleteCategory(long id)
         {
-            await HttpClient.DeleteAsync($"Category/{id}");
+            await HttpClient.DeleteAsync($"api/Category/{id}");
         }
 
         public async Task<CategoryModel> GetCategory(long id)
         {
-            return await HttpClient.GetFromJsonAsync<CategoryModel>($"Category/{id}");
+            return await HttpClient.GetFromJsonAsync<CategoryModel>($"api/Category/{id}");
         }
 
         public async Task<List<CategoryModel>> GetCategoryList()
         {
-            return await HttpClient.GetFromJsonAsync<List<CategoryModel>>("Category");
+            return await HttpClient.GetFromJsonAsync<List<CategoryModel>>("api/Category");
         }
 
         public async Task UpdateCategory(long id, CategoryModel model)
         {
-            await HttpClient.PutAsJsonAsync($"Category/{id}", model);
+            await HttpClient.PutAsJsonAsync($"api/Category/{id}", model);
         }
     }
 }

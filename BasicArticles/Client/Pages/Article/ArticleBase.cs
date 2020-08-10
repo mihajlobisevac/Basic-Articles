@@ -64,7 +64,7 @@ namespace BasicArticles.Client.Pages.Article
 
         protected void HandleEditComment(long comment)
         {
-            Navigation.NavigateTo($"/com/edit/{comment}");
+            Navigation.NavigateTo($"/comment/edit/{comment}");
         }
         protected async Task HandleDeleteComment(long comment)
         {

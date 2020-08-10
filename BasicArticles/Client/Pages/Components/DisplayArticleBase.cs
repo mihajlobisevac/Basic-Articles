@@ -25,7 +25,7 @@ namespace BasicArticles.Client.Pages.Components
         {
             Comments = await CommentService.GetCommentListByArticle(Article.Id);
 
-            ArticleRoute = $"art/{Article.Id}";
+            ArticleRoute = $"article/{Article.Id}";
         }
     }
 }

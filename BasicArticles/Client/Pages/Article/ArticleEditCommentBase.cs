@@ -42,7 +42,7 @@ namespace BasicArticles.Client.Pages.Article
 
             await CommentService.UpdateComment(Id, CommentModel);
 
-            Navigation.NavigateTo($"art/{CommentViewModel.Article}");
+            Navigation.NavigateTo($"article/{CommentViewModel.Article}");
         }
     }
 }
