@@ -12,7 +12,7 @@ namespace BasicArticles.Client.Pages.Article
 
         [Parameter]
         public ArticleViewModel Model { get; set; }
-        [Parameter] 
+        [Parameter]
         public List<CategoryViewModel> CategoriesViewModel { get; set; }
     }
 }

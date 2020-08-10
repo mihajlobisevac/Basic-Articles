@@ -33,6 +33,7 @@ namespace BasicArticles.Client.ViewModels.Article
 
         public ArticleViewModel()
         {
+            Category = "";
         }
 
         public static implicit operator ArticleViewModel(ArticleModel i)

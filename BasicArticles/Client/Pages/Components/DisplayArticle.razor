@@ -1,30 +1,24 @@
-﻿@inject NavigationManager Navigation
+﻿@inherits DisplayArticleBase
 
-<div class="main-article">
+@if (Comments != null)
+{
+    <div class="main-article">
 
-    <img alt="" src="img/@Article.ImagePath" @onclick="Navigate">
-    <div class="inner-shadow"  @onclick="Navigate"></div>
-    <a href="" class="comments-box">432</a>
+        <img alt="" src="img/@Article.ImagePath" @onclick="() => Navigation.NavigateTo(ArticleRoute)">
+        <div class="inner-shadow" @onclick="() => Navigation.NavigateTo(ArticleRoute)"></div>
+        <a href="@ArticleRoute" class="comments-box">@Comments.Count</a>
 
-    <div class="article-text">
-        <h1>
-            <a href="art/@Article.Id">
-                @Article.Title
-            </a>
-        </h1>
-        <p>
-            @Article.IntroText
-        </p>
+        <div class="article-text">
+            <h1>
+                <a href="art/@Article.Id">
+                    @Article.Title
+                </a>
+            </h1>
+            <p>
+                @Article.IntroText
+            </p>
+        </div>
+
     </div>
-
-</div>
-
-@code {
-    [Parameter]
-    public ArticleModel Article { get; set; }
-
-    protected void Navigate()
-    {
-        Navigation.NavigateTo($"art/{Article.Id}");
-    }
 }
+

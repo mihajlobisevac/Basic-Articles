@@ -44,7 +44,7 @@
             @foreach (var item in CategoriesViewModel)
             {
                 <InputCheckbox placeholder="@item.Selected" id="@item.Name"
-                               @bind-Value="@item.Selected" />
+                                @bind-Value="@item.Selected" />
                 <label for="@item.Name">@item.Name</label>
                 <br />
             }
