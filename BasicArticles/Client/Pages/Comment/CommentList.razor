@@ -1,0 +1,38 @@
+﻿@page "/mycomments"
+@inherits CommentListBase
+
+@attribute [Authorize]
+
+@if (CommentList == null)
+{
+    <div class="spinner"></div>
+}
+else if (CommentList.Count() == 0)
+{
+    <h5>You haven't posted any comments yet</h5>
+}
+else
+{
+    @foreach (var i in CommentList)
+    {
+        <div class="comment-wrapper">
+            <div class="comment-user">
+                @if (i.PublishedDate == i.UpdatedDate)
+                {
+                    <div>@i.User <span class="comment-date">@i.PublishedDate</span></div>
+                }
+                else
+                {
+                    <div>@i.User <span class="comment-date">Last edited @i.UpdatedDate</span></div>
+                }
+            <div>
+                <button class="comment-edit-button" @onclick="() => HandleEditComment(i.Id)">Edit</button>
+                <button class="comment-edit-button" @onclick="() => HandleDeleteComment(i.Id)">Delete</button>
+            </div>
+            </div>
+            <div class="comment-comment">
+                @i.BodyText
+            </div>
+        </div>
+    }
+}

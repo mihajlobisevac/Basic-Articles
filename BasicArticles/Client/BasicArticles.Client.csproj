@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Comment\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 

@@ -80,6 +80,11 @@ namespace BasicArticles.Client.ViewModels.Comment
             return await HttpClient.GetFromJsonAsync<List<CommentModel>>($"Comment/list/{id}");
         }
 
+        public async Task<List<CommentModel>> GetCommentListByUser(string user)
+        {
+            return await HttpClient.GetFromJsonAsync<List<CommentModel>>($"Comment/user/{user}");
+        }
+
         public async Task UpdateComment(long id, CommentModel model)
         {
             await HttpClient.PutAsJsonAsync($"Comment/{id}", model);

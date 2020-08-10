@@ -8,6 +8,7 @@ namespace BasicArticles.Client.ViewModels.Comment
     {
         Task<List<CommentModel>> GetCommentList();
         Task<List<CommentModel>> GetCommentListByArticle(long id);
+        Task<List<CommentModel>> GetCommentListByUser(string user);
         Task<CommentModel> GetComment(long id);
         Task CreateComment(CommentModel model);
         Task UpdateComment(long id, CommentModel model);

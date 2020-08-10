@@ -52,37 +52,37 @@
     else if (Comments.Count == 0)
     {
         <div class="article-author" style="margin: 1em 0;">There's no comments</div>
-        }
-        else
-        {
-            @foreach (var i in Comments)
-            {
-                <div class="comment-wrapper">
-                    <div class="comment-user">
-                        @if (i.PublishedDate == i.UpdatedDate)
-                        {
-                            <div>@i.User <span class="comment-date">@i.PublishedDate</span></div>
-                        }
-                        else
-                        {
-                            <div>@i.User <span class="comment-date">Last edited @i.UpdatedDate</span></div>
-                        }
-                        <div>
-                            @if (i.User == CommentAs)
-                            {
-                                <button class="comment-edit-button" @onclick="() => HandleEditComment(i.Id)">Edit</button>
-                                <button class="comment-edit-button" @onclick="() => HandleDeleteComment(i.Id)">Delete</button>
-                            }
-                        </div>
-                    </div>
-                    <div class="comment-comment">
-                        @i.BodyText
-                    </div>
-                </div>
-            }
-        }
     }
     else
     {
-        <h4>Article not found</h4>
+        @foreach (var i in Comments)
+        {
+            <div class="comment-wrapper">
+                <div class="comment-user">
+                @if (i.PublishedDate == i.UpdatedDate)
+                {
+                    <div>@i.User <span class="comment-date">@i.PublishedDate</span></div>
+                }
+                else
+                {
+                    <div>@i.User <span class="comment-date">Last edited @i.UpdatedDate</span></div>
+                }
+                <div>
+                    @if (i.User == CommentAs)
+                    {
+                        <button class="comment-edit-button" @onclick="() => HandleEditComment(i.Id)">Edit</button>
+                        <button class="comment-edit-button" @onclick="() => HandleDeleteComment(i.Id)">Delete</button>
+                    }
+                </div>
+                </div>
+                <div class="comment-comment">
+                    @i.BodyText
+                </div>
+            </div>
+        }
     }
+}
+else
+{
+    <h4>Article not found</h4>
+}
