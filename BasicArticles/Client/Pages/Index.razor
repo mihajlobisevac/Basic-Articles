@@ -1,3 +1,18 @@
 ﻿@page "/"
+@inherits IndexBase
 
-<p>Index page</p>
+@if (Articles == null)
+{
+    <div class="spinner"></div>
+}
+else if (Articles.Count == 0)
+{
+    <h5>There is no articles</h5>
+}
+else
+{
+    @foreach (var articleModel in Articles)
+    {
+        <DisplayArticle Article="articleModel" />
+    }
+}
