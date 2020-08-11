@@ -1,5 +1,8 @@
 # About
---
+This is a simple article web app using Blazor Webassembly with Individual Users Authentication.
+Uses custom Web API with Entity Framework Core to access SQL Server database.
+
+This app let's create/update/delete categories, articles and comments.
 
 # Screenshots
 
