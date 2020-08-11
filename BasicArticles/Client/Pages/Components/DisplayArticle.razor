@@ -1,4 +1,5 @@
-﻿@inherits DisplayArticleBase
+﻿@inject NavigationManager Navigation
+@inject ICommentViewModel CommentService
 
 @if (Comments != null)
 {
@@ -22,3 +23,17 @@
     </div>
 }
 
+@code{
+    [Parameter]
+    public ArticleModel Article { get; set; }
+
+    public List<CommentModel> Comments { get; set; }
+    public string ArticleRoute { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Comments = await CommentService.GetCommentListByArticle(Article.Id);
+
+        ArticleRoute = $"article/{Article.Id}";
+    }
+}

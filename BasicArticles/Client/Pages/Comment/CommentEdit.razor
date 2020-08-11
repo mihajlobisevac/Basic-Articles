@@ -1,5 +1,5 @@
 ﻿@page "/comment/edit/{id:long}"
-@inherits ArticleEditCommentBase
+@inherits CommentEditBase
 
 <AuthorizeView>
     <NotAuthorized>
@@ -11,7 +11,7 @@
             <EditForm Model="@CommentViewModel" OnValidSubmit="HandleValidComment">
                 <DataAnnotationsValidator />
 
-                <ArticleCommentForm CommentViewModel="@CommentViewModel" User="@CommentAs" />
+                <CommentForm CommentViewModel="@CommentViewModel" User="@CommentAs" />
 
                 <div class="form-validation">
                     <ValidationMessage For="@(() => CommentViewModel.BodyText)" />

@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BasicArticles.Client.Pages.Article
+namespace BasicArticles.Client.Pages.Comment
 {
-    public class ArticleEditCommentBase : ComponentBase
+    public class CommentEditBase : ComponentBase
     {
         [Inject]
         private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
